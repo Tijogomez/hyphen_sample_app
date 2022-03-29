@@ -6,7 +6,7 @@ import 'package:hyphenapp/bloc/login/login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRepo authRepo;
-  LoginBloc({required this.authRepo}) : super(LoginState());
+  LoginBloc({this.authRepo}) : super(LoginState());
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
@@ -21,7 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         await authRepo.login();
         yield state.copyWith(formStatus: SubmissionSuccess());
       } catch (e) {
-        // yield state.copyWith(formStatus: SubmissionFailed(e));
+        yield state.copyWith(formStatus: SubmissionFailed(e));
       }
     }
   }

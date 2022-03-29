@@ -27,7 +27,12 @@ class LoginScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [_usernameField(), _passwordField(), _loginButton()],
+          children: [
+            _imageSection(),
+            _usernameField(),
+            _passwordField(),
+            _loginButton()
+          ],
         ),
       ),
     );
@@ -41,9 +46,8 @@ class LoginScreen extends StatelessWidget {
         ),
         validator: (value) =>
             state.isValidUsername ? null : 'Username is short',
-        onChanged: (value) => context
-            .read<LoginBloc>()
-            .add(LoginUsernameChanged(username: value)),
+        onChanged: (value) =>
+            context.read<LoginBloc>().add(LoginUsernameChanged(value)),
       );
     });
   }
@@ -57,9 +61,8 @@ class LoginScreen extends StatelessWidget {
         ),
         validator: (value) =>
             state.isValidPassword ? null : 'Min of 8 char required',
-        onChanged: (value) => context
-            .read<LoginBloc>()
-            .add(LoginPasswordChanged(password: value)),
+        onChanged: (value) =>
+            context.read<LoginBloc>().add(LoginPasswordChanged(value)),
       );
     });
   }
@@ -68,10 +71,50 @@ class LoginScreen extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
       return state.formStatus is FormSubmitting
           ? CircularProgressIndicator()
-          : ElevatedButton(
-              onPressed: () {},
-              child: Text('Login'),
-            );
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                  height: 45,
+                  width: 400,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        context.read<LoginBloc>().add(LoginSubmitted());
+                      }
+                    },
+                    child: Text('Login'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.deepOrange,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                  )));
     });
+  }
+
+  Expanded _imageSection() {
+    return Expanded(
+        flex: 1,
+        child: Stack(children: [
+          Container(
+            transform: Matrix4.translationValues(-50.0, -10.0, 0.0),
+            child: Image(
+              image: AssetImage('assets/images/OrangeBlob@3x.png'),
+              alignment: Alignment.centerLeft,
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
+            width: double.infinity,
+            margin: EdgeInsets.only(right: 80),
+          ),
+          Positioned(
+            top: 0.0,
+            bottom: 100.0,
+            right: 0.0,
+            left: 0.0,
+            child: Image.asset('assets/images/BuilderGMLogo@3x.png'),
+          )
+        ]));
   }
 }

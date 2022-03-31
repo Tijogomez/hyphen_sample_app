@@ -29,9 +29,17 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _imageSection(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: _loginLabel(),
+            ),
             _usernameField(),
-            _passwordField(),
-            _loginButton()
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: _passwordField(),
+            ),
+            _loginButton(),
+            _bottomImageSection()
           ],
         ),
       ),
@@ -42,6 +50,10 @@ class LoginScreen extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
       return TextFormField(
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 12),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
           hintText: 'Username',
         ),
         validator: (value) =>
@@ -57,6 +69,10 @@ class LoginScreen extends StatelessWidget {
       return TextFormField(
         obscureText: true,
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 12),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
           hintText: 'Password',
         ),
         validator: (value) =>
@@ -82,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                         context.read<LoginBloc>().add(LoginSubmitted());
                       }
                     },
-                    child: Text('Login'),
+                    child: const Text('Login'),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.deepOrange,
                       shape: RoundedRectangleBorder(
@@ -99,22 +115,83 @@ class LoginScreen extends StatelessWidget {
         child: Stack(children: [
           Container(
             transform: Matrix4.translationValues(-50.0, -10.0, 0.0),
-            child: Image(
+            child: const Image(
               image: AssetImage('assets/images/OrangeBlob@3x.png'),
               alignment: Alignment.centerLeft,
               width: double.infinity,
               fit: BoxFit.fill,
             ),
             width: double.infinity,
-            margin: EdgeInsets.only(right: 80),
+            margin: const EdgeInsets.only(right: 80),
           ),
           Positioned(
             top: 0.0,
-            bottom: 100.0,
+            bottom: 00.0,
             right: 0.0,
             left: 0.0,
             child: Image.asset('assets/images/BuilderGMLogo@3x.png'),
           )
         ]));
+  }
+
+  Expanded _bottomImageSection() {
+    return Expanded(
+        flex: 1,
+        child: Stack(children: [
+          Container(
+            transform: Matrix4.translationValues(
+              50.0,
+              140.0,
+              0,
+            ),
+            child: const Image(
+              image: AssetImage('assets/images/Greyblob@3x.png'),
+              alignment: Alignment.topRight,
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
+            width: double.infinity,
+            margin: const EdgeInsets.only(left: 60),
+          ),
+          Positioned(
+            top: 0.0,
+            right: 0.0,
+            left: 0.0,
+            bottom: 70,
+            child: _labelPowereby(),
+          )
+        ]));
+  }
+
+  Widget _labelPowereby() {
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      const Text(
+        "Powered By",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 12,
+          color: Colors.grey,
+        ),
+      ),
+      Image.asset(
+        'assets/images/logo@3x.png',
+        height: 50,
+        width: 150,
+      )
+    ]);
+  }
+
+  Widget _loginLabel() {
+    return Container(
+      alignment: Alignment.center,
+      child: Text(
+        "Login",
+        style: TextStyle(
+          color: Colors.grey,
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+        ),
+      ),
+    );
   }
 }

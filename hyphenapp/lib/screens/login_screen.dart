@@ -31,7 +31,7 @@ class LoginScreen extends StatelessWidget {
             _imageSection(),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: _loginLabel(),
+              child: _labelLogin(),
             ),
             _usernameField(),
             Padding(
@@ -181,10 +181,10 @@ class LoginScreen extends StatelessWidget {
     ]);
   }
 
-  Widget _loginLabel() {
+  Widget _labelLogin() {
     return Container(
       alignment: Alignment.center,
-      child: Text(
+      child: const Text(
         "Login",
         style: TextStyle(
           color: Colors.grey,

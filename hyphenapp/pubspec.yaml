@@ -64,6 +64,7 @@ flutter:
     - assets/images/BuilderGMLogo@3x.png
     - assets/images/Greyblob@3x.png
     - assets/images/logo@3x.png
+    - assets/images/app_icon.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

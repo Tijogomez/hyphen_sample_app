@@ -5,6 +5,7 @@ import 'package:hyphenapp/bloc/form_submission_status.dart';
 import 'package:hyphenapp/bloc/login/login_bloc.dart';
 import 'package:hyphenapp/bloc/login/login_events.dart';
 import 'package:hyphenapp/bloc/login/login_state.dart';
+import 'package:hyphenapp/screens/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -96,6 +97,11 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         context.read<LoginBloc>().add(LoginSubmitted());
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ));
                       }
                     },
                     child: const Text('Login'),

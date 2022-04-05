@@ -40,6 +40,7 @@ class LoginScreen extends StatelessWidget {
               child: _passwordField(),
             ),
             _loginButton(),
+            forgetPW(),
             _bottomImageSection()
           ],
         ),
@@ -104,9 +105,16 @@ class LoginScreen extends StatelessWidget {
                             ));
                       }
                     },
-                    child: const Text('Login'),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                      ),
+                    ),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.deepOrange,
+                      primary: Color(0xFFF47621),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
@@ -147,7 +155,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             transform: Matrix4.translationValues(
               50.0,
-              140.0,
+              75.0,
               0,
             ),
             child: const Image(
@@ -177,11 +185,12 @@ class LoginScreen extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 12,
           color: Colors.grey,
+          fontFamily: 'assets/fonts/Nunito-Regular.ttf',
         ),
       ),
       Image.asset(
         'assets/images/logo@3x.png',
-        height: 50,
+        height: 35,
         width: 150,
       )
     ]);
@@ -193,10 +202,23 @@ class LoginScreen extends StatelessWidget {
       child: const Text(
         "Login",
         style: TextStyle(
-          color: Colors.grey,
+          color: Color(0xFF717171),
           fontWeight: FontWeight.bold,
           fontSize: 24,
+          fontFamily: 'Nunito',
         ),
+      ),
+    );
+  }
+
+  Widget forgetPW() {
+    return Text(
+      "Forgot Password",
+      style: TextStyle(
+        color: Color(0xFF1675B7),
+        fontSize: 18.0,
+        decoration: TextDecoration.underline,
+        fontWeight: FontWeight.w400,
       ),
     );
   }

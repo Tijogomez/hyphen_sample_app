@@ -29,16 +29,17 @@ class _HomeScreenState extends State<HomeScreen> {
             letterSpacing: 1.0,
           ),
         ),
-
-        //  Padding(
-        //   padding: const EdgeInsets.all(8.0),
-        //   child: CircleAvatar(
-        //     backgroundColor: Colors.orange,
-        //     foregroundColor: Colors.white,
-        //     child: Text("U"),
-        //     radius: 20,
-        //   ),
-        // ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundColor: Colors.orange,
+              foregroundColor: Colors.white,
+              child: Text("U"),
+              radius: 20,
+            ),
+          ),
+        ],
       ),
     );
   }

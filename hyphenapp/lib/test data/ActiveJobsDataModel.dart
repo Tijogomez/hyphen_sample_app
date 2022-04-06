@@ -1,6 +1,6 @@
 class ActiveJobs {
-  final int JobNumber;
-  final String JobDescription;
+  final int jobNumber;
+  final String jobDescription;
 
-  ActiveJobs(this.JobNumber, this.JobDescription);
+  ActiveJobs(this.jobNumber, this.jobDescription);
 }

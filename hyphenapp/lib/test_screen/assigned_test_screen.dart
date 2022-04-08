@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hyphenapp/test%20data/AssignedTasksDataModel.dart';
 
@@ -33,24 +35,31 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
     'McCalister Residence',
     'Cambridge Addition'
   ];
-  static List<double> schedstart = [
-    10 / 15 / 21,
-    10 / 24 / 21,
-    11 / 1 / 21,
-    11 / 10 / 21,
-    11 / 16 / 21,
-    12 / 12 / 21
+  static List<String> schedstart = [
+    '10 / 15 / 21',
+    '10 / 24 / 21',
+    '11 / 1 / 21',
+    '11 / 10 / 21',
+    '11 / 16 / 21',
+    '12 / 12 / 21'
   ];
-  static List<double> schedend = [
-    10 / 31 / 21,
-    11 / 2 / 21,
-    11 / 15 / 21,
-    11 / 10 / 21,
-    11 / 30 / 21,
-    5 / 5 / 21
+  static List<String> schedend = [
+    '10 / 31 / 21',
+    '11 / 2 / 21',
+    '11 / 15 / 21',
+    '11 / 10 / 21',
+    '11 / 30 / 21',
+    '5 / 5 / 21'
   ];
-  static List<double> actstart = [10 / 3 / 21, 10 / 24 / 21, 0, 0, 0, 0];
-  static List<double> actend = [0, 0, 0, 0, 0, 0];
+  static List<String> actstart = [
+    '10 / 3 / 21',
+    '10 / 24 / 21',
+    '',
+    '',
+    '',
+    ''
+  ];
+  static List<String> actend = [];
   static List<int> jobnumber = [22, 10, 13, 4, 18, 9];
   static List<IconData> taskicon = [
     Icons.show_chart,
@@ -69,7 +78,6 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
           schedstart[index],
           schedend[index],
           actstart[index],
-          actend[index],
           description[index],
           jobnumber[index],
           taskicon[index]));
@@ -84,7 +92,7 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
             topRight: Radius.circular(15),
           ),
         ),
-        elevation: 3,
+        elevation: 0,
         child: Column(
           // mainAxisSize: MainAxisSize.min,
           children: [
@@ -106,10 +114,13 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
                     Icons.assignment_turned_in,
                     color: Colors.white,
                   ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
                   Text(
                     "Assigned Tasks",
                     style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
@@ -124,50 +135,138 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
                   return Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.only(
+                            top: 0, right: 12, left: 12, bottom: 12),
                         child: Column(
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Assignedtasks[index].icon,
-                                    color: Colors.black54),
-                                // SizedBox(width: 100.0),
-                                Text(
-                                  Assignedtasks[index].jobHeading,
-                                  style: TextStyle(
-                                      fontFamily:
-                                          'assets/fonts/Nunito-Regular.ttf',
-                                      color: Colors.black54,
-                                      fontWeight: FontWeight.bold),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(Assignedtasks[index].icon,
+                                            color: Colors.black54),
+                                        // SizedBox(width: 100.0),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          Assignedtasks[index].jobHeading,
+                                          style: TextStyle(
+                                              fontFamily:
+                                                  'assets/fonts/Nunito-Regular.ttf',
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      'Job' +
+                                          ' ' +
+                                          Assignedtasks[index]
+                                              .jobNumber
+                                              .toString() +
+                                          ' ' '-' +
+                                          ' ' +
+                                          Assignedtasks[index].jobDescription,
+                                      style: TextStyle(
+                                          color: Colors.black38,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ],
                                 ),
                                 // SizedBox(width: 150.0),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    Assignedtasks[index].status,
-                                    style: TextStyle(
-                                      color: Colors.white60,
-                                      fontSize: 15.0,
-                                      fontFamily:
-                                          'assets/fonts/Nunito-Regular.ttf',
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8.0),
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      width: 65,
+                                      child: Text(
+                                        Assignedtasks[index].status,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white60,
+                                          fontSize: 15.0,
+                                          fontFamily:
+                                              'assets/fonts/Nunito-Regular.ttf',
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF47621),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xFFF47621),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
                                     ),
                                   ),
                                 )
                               ],
                             ),
-                            Text('Job' +
-                                ' ' +
-                                Assignedtasks[index].jobNumber.toString() +
-                                ' ' '-' +
-                                ' ' +
-                                Assignedtasks[index].jobDescription)
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Sched Start:' +
+                                            Assignedtasks[index].schedStart,
+                                        style: TextStyle(
+                                            color: Colors.black38,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      Text(
+                                        'Sched End:' +
+                                            " " +
+                                            Assignedtasks[index].schedEnd,
+                                        style: TextStyle(
+                                            color: Colors.black38,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Act Start:' +
+                                            Assignedtasks[index].actStart,
+                                        style: TextStyle(
+                                            color: Colors.black38,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      Text(
+                                        "Act End:",
+                                        style: TextStyle(
+                                            color: Colors.black38,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 4.0),
+                                  child: Container(
+                                    width: 10,
+                                    child: Icon(
+                                      Icons.chevron_right,
+                                      size: 35,
+                                      color: Color(0xFFF47621),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),

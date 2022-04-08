@@ -77,10 +77,13 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                         Icons.location_on_sharp,
                         color: Colors.white,
                       ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
                       Text(
                         "Active Jobs",
                         style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 15.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
@@ -148,7 +151,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                 topRight: Radius.circular(15),
               ),
             ),
-            elevation: 3,
+            elevation: 0,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -170,10 +173,13 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                         Icons.assignment_turned_in,
                         color: Colors.white,
                       ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
                       Text(
                         "Assigned Tasks",
                         style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 15.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),

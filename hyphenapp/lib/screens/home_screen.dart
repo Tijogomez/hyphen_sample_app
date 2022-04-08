@@ -17,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
   static List<int> jobNo = [1, 2, 3, 4, 5, 6, 7];
   static List<String> description = [
     'Structural Residence',
@@ -29,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'Boriston Exterior',
     'Boriston Residence'
   ];
-  // int _selectedIndex = 0;
 
   final List<ActiveJobs> Activejobs = List.generate(
       jobNo.length, (index) => ActiveJobs(jobNo[index], description[index]));
@@ -95,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text(
                 "AD",
                 style: TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.w600,
                   fontSize: 20.0,
                   fontFamily: 'assets/fonts/Nunito-Regular.ttf',
@@ -106,11 +105,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: _widgetOptions.elementAt(index),
+        child: Card(
+          elevation: 3,
+          child: SingleChildScrollView(
+            child: _widgetOptions.elementAt(index),
+          ),
         ),
       ),
       bottomNavigationBar: SnakeNavigationBar.color(
+        snakeShape: index == 2 ? SnakeShape.circle : SnakeShape.rectangle,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),

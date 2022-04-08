@@ -58,7 +58,7 @@ class _JobTestScreenState extends State<JobTestScreen> {
                 topRight: Radius.circular(15),
               ),
             ),
-            elevation: 3,
+            elevation: 0,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -98,24 +98,42 @@ class _JobTestScreenState extends State<JobTestScreen> {
                 const SizedBox(
                   height: 10.0,
                 ),
-                Row(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(left: 35.0),
-                      child: Text(
-                        "Job #" +
-                            "                  " +
-                            "Description" +
-                            "                                 " +
-                            "Status",
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 4, 5, 4),
+                  child: Row(
+                    children: const [
+                      Text(
+                        "Job #",
                         style: TextStyle(
                           color: Colors.black45,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'assets/fonts/Nunito-Regular.ttf',
                         ),
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(40, 0, 20, 0),
+                          child: Text(
+                            "Description",
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              color: Colors.black45,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Status",
+                        style: TextStyle(
+                          color: Colors.black45,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 5.0,
@@ -134,18 +152,33 @@ class _JobTestScreenState extends State<JobTestScreen> {
                             thickness: 2,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 40),
+                            padding: const EdgeInsets.fromLTRB(40, 4, 5, 4),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  JobsSection[index].jobNumber.toString() +
-                                      "                         " +
-                                      JobsSection[index].jobDescription +
-                                      "         " +
-                                      JobsSection[index].status,
+                                  JobsSection[index].jobNumber.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(50, 0, 20, 0),
+                                    child: Text(
+                                      JobsSection[index].jobDescription,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.start,
+                                      style: const TextStyle(
+                                          color: Colors.black38,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  JobsSection[index].status,
                                   style: const TextStyle(
                                       color: Colors.black38,
                                       fontWeight: FontWeight.bold),

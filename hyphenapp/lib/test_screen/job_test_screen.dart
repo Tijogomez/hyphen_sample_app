@@ -73,25 +73,36 @@ class _JobTestScreenState extends State<JobTestScreen> {
                   height: 40,
                   width: double.infinity,
                   child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.location_pin,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          " Jobs",
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Icon(
-                          Icons.sort,
-                          color: Colors.white,
-                        ),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.location_pin,
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  " Jobs",
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontSize: 20.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Icon(
+                            Icons.filter_list,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -106,8 +117,8 @@ class _JobTestScreenState extends State<JobTestScreen> {
                         "Job #",
                         style: TextStyle(
                           color: Colors.black45,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Nunito',
                         ),
                       ),
                       Expanded(
@@ -118,8 +129,8 @@ class _JobTestScreenState extends State<JobTestScreen> {
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: Colors.black45,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                              fontWeight: FontWeight.w800,
+                              fontFamily: 'Nunito',
                             ),
                           ),
                         ),
@@ -128,8 +139,8 @@ class _JobTestScreenState extends State<JobTestScreen> {
                         "Status",
                         style: TextStyle(
                           color: Colors.black45,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Nunito',
                         ),
                       ),
                     ],

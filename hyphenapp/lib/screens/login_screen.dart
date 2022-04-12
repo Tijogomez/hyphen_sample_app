@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hyphenapp/bloc/auth_repo.dart';
@@ -52,12 +54,12 @@ class LoginScreen extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
       return TextFormField(
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 12),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-          ),
-          hintText: 'Username',
-        ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 12),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+            ),
+            hintText: 'Username',
+            hintStyle: TextStyle(color: Color.fromRGBO(192, 193, 192, 15))),
         validator: (value) =>
             state.isValidUsername ? null : 'Username is short',
         onChanged: (value) =>
@@ -71,12 +73,12 @@ class LoginScreen extends StatelessWidget {
       return TextFormField(
         obscureText: true,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 12),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-          ),
-          hintText: 'Password',
-        ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 12),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+            ),
+            hintText: 'Password',
+            hintStyle: TextStyle(color: Color.fromRGBO(192, 193, 192, 15))),
         validator: (value) =>
             state.isValidPassword ? null : 'Min of 8 char required',
         onChanged: (value) =>
@@ -108,9 +110,9 @@ class LoginScreen extends StatelessWidget {
                     child: const Text(
                       'Login',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromRGBO(253, 239, 227, 50),
                         fontSize: 18.0,
-                        fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                        fontFamily: 'Nunito',
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -185,7 +187,7 @@ class LoginScreen extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 12,
           color: Colors.grey,
-          fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+          fontFamily: 'Nunito',
         ),
       ),
       Image.asset(

@@ -10,16 +10,15 @@ class HomeTestScreen extends StatefulWidget {
 }
 
 class _HomeTestScreenState extends State<HomeTestScreen> {
-  static List<int> jobNo = [1, 2, 3, 4, 5, 6, 7];
+  static List<int> jobNo = [1, 2, 3, 45656552, 5, 6, 8];
   static List<String> description = [
-    'Structural Residence',
-    'Content Residence',
+    'Error Residence-Structural',
+    'Error Residence-Content Replica ',
     'PLA Building',
     'Blaise Cabin',
     'Brockwell Residence',
     'Winslow Garage',
     'Boriston Exterior',
-    'Boriston Residence'
   ];
 
   final List<ActiveJobs> Activejobs = List.generate(
@@ -83,6 +82,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                       Text(
                         "Active Jobs",
                         style: TextStyle(
+                            fontFamily: 'Nunito',
                             fontSize: 15.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
@@ -95,14 +95,25 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                 ),
                 Row(
                   children: const [
-                    Padding(
-                      padding: EdgeInsets.only(left: 35.0),
+                    Expanded(
                       child: Text(
-                        "Job #" + "                  " + "Description",
+                        "Job #",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black45,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Nunito',
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        "Description",
+                        style: TextStyle(
+                          color: Colors.black45,
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Nunito',
                         ),
                       ),
                     ),
@@ -125,15 +136,30 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                             thickness: 2,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 40),
-                            child: Text(
-                              Activejobs[index].jobNumber.toString() +
-                                  "                         " +
-                                  Activejobs[index].jobDescription,
-                              style: const TextStyle(
-                                  color: Colors.black38,
-                                  fontWeight: FontWeight.bold),
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    Activejobs[index].jobNumber.toString(),
+                                    textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        color: Colors.black38,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    Activejobs[index].jobDescription,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        color: Colors.black38,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -179,6 +205,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                       Text(
                         "Assigned Tasks",
                         style: TextStyle(
+                            fontFamily: 'Nunito',
                             fontSize: 15.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
@@ -197,8 +224,8 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                         "Job #" + "                     " + "Description",
                         style: TextStyle(
                           color: Colors.black45,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Nunito',
                         ),
                       ),
                     ),
@@ -239,7 +266,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                                           "                   ",
                                       style: const TextStyle(
                                           color: Colors.black38,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w600),
                                     ),
                                     Icon(Assignedtaskshome[index].icon,
                                         color: Colors.black54),
@@ -250,7 +277,7 @@ class _HomeTestScreenState extends State<HomeTestScreen> {
                                       Assignedtaskshome[index].jobDescription,
                                       style: const TextStyle(
                                           color: Colors.black38,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w600),
                                     ),
                                   ],
                                 ),

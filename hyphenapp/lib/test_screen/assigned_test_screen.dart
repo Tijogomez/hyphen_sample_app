@@ -156,8 +156,7 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
                                         Text(
                                           Assignedtasks[index].jobHeading,
                                           style: TextStyle(
-                                              fontFamily:
-                                                  'assets/fonts/Nunito-Regular.ttf',
+                                              fontFamily: 'Nunito',
                                               color: Colors.black54,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -184,15 +183,15 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
                                   child: ElevatedButton(
                                     onPressed: () {},
                                     child: Container(
-                                      width: 65,
+                                      width: 70,
                                       child: Text(
                                         Assignedtasks[index].status,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          color: Colors.white60,
+                                          color: Colors.white,
                                           fontSize: 15.0,
-                                          fontFamily:
-                                              'assets/fonts/Nunito-Regular.ttf',
+                                          fontFamily: 'Nunito',
+                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
                                     ),

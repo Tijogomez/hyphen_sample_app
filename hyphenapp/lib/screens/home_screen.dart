@@ -17,39 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static List<int> jobNo = [1, 2, 3, 4, 5, 6, 7];
-  static List<String> description = [
-    'Structural Residence',
-    'Content Residence',
-    'PLA Building',
-    'Blaise Cabin',
-    'Brockwell Residence',
-    'Winslow Garage',
-    'Boriston Exterior',
-    'Boriston Residence'
-  ];
-
-  final List<ActiveJobs> Activejobs = List.generate(
-      jobNo.length, (index) => ActiveJobs(jobNo[index], description[index]));
-
-  static List<int> assignedJobNo = [5421, 8463, 2675, 5423];
-  static List<String> assignedDescription = [
-    'Call customer re:nail pops',
-    'Site Prep',
-    'Schedule Customer Visit',
-    'Site Prep',
-  ];
-  static List<IconData> assignedTaskIcons = [
-    Icons.construction,
-    Icons.show_chart,
-    Icons.alarm,
-    Icons.show_chart,
-  ];
-  final List<AssignedTasksInHome> Assignedtaskshome = List.generate(
-      assignedJobNo.length,
-      (index) => AssignedTasksInHome(assignedJobNo[index],
-          assignedDescription[index], assignedTaskIcons[index]));
-
   List<Widget> _widgetOptions = <Widget>[
     JobTestScreen(),
     AssignedTestScreen(),
@@ -93,10 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text(
                 "AD",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Color.fromRGBO(255, 252, 251, 15),
                   fontWeight: FontWeight.w600,
                   fontSize: 20.0,
-                  fontFamily: 'assets/fonts/Nunito-Regular.ttf',
+                  fontFamily: 'Nunito',
                 ),
               ),
               radius: 20,

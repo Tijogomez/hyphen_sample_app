@@ -2,10 +2,10 @@ import 'package:hyphenapp/bloc/form_submission_status.dart';
 
 class LoginState {
   final String username;
-  bool get isValidUsername => username.length >= 4;
+  bool get isValidUsername => username.length >= 0;
 
   final String password;
-  bool get isValidPassword => password.length >= 8;
+  bool get isValidPassword => password.length >= 0;
 
   final FormSubmissionStatus formStatus;
 

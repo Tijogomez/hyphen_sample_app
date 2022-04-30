@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hyphenapp/screens/home_screen.dart';
 import 'package:hyphenapp/test%20data/JobsDataModel.dart';
+import 'package:hyphenapp/utils/filter.dart';
 
 class JobTestScreen extends StatefulWidget {
   const JobTestScreen({Key key}) : super(key: key);
@@ -43,10 +45,13 @@ class _JobTestScreenState extends State<JobTestScreen> {
     'O'
   ];
 
-  final List<Jobs> JobsSection = List.generate(jobnmbr.length,
+  static final List<Jobs> JobsInfoList = List.generate(jobnmbr.length,
       (index) => Jobs(jobnmbr[index], jobDesc[index], jobStatus[index]));
+  List<Jobs> JobSection = filterData(JobsInfoList);
+
   @override
   Widget build(BuildContext context) {
+    print(JobSection[0].jobDescription.toString());
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: Column(
@@ -97,9 +102,14 @@ class _JobTestScreenState extends State<JobTestScreen> {
                               ],
                             ),
                           ),
-                          Icon(
-                            Icons.filter_list,
-                            color: Colors.white,
+                          InkWell(
+                            child: Icon(
+                              Icons.filter_list,
+                              color: Colors.white,
+                            ),
+                            onTap: () {
+                              scaffoldKey.currentState.openEndDrawer();
+                            },
                           ),
                         ],
                       ),
@@ -152,7 +162,7 @@ class _JobTestScreenState extends State<JobTestScreen> {
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: JobsSection.length,
+                  itemCount: JobSection.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 4),
@@ -169,7 +179,7 @@ class _JobTestScreenState extends State<JobTestScreen> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  JobsSection[index].jobNumber.toString(),
+                                  JobSection[index].jobNumber.toString(),
                                   style: const TextStyle(
                                       color: Colors.black38,
                                       fontWeight: FontWeight.bold),
@@ -179,7 +189,7 @@ class _JobTestScreenState extends State<JobTestScreen> {
                                     padding:
                                         const EdgeInsets.fromLTRB(50, 0, 20, 0),
                                     child: Text(
-                                      JobsSection[index].jobDescription,
+                                      JobSection[index].jobDescription,
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.start,
                                       style: const TextStyle(
@@ -189,7 +199,7 @@ class _JobTestScreenState extends State<JobTestScreen> {
                                   ),
                                 ),
                                 Text(
-                                  JobsSection[index].status,
+                                  JobSection[index].status,
                                   style: const TextStyle(
                                       color: Colors.black38,
                                       fontWeight: FontWeight.bold),

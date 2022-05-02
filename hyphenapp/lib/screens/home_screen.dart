@@ -3,7 +3,6 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:hyphenapp/main.dart';
 import 'package:hyphenapp/test_screen/assigned_test_screen.dart';
 import 'package:hyphenapp/utils/filter.dart';
-import 'package:hyphenapp/utils/filter.dart';
 import '../test_screen/home_test_screen.dart';
 import 'package:hyphenapp/test_screen/home_test_screen.dart';
 import '../test_screen/job_test_screen.dart';
@@ -26,20 +25,21 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTestScreen(),
   ];
 
-  bool _close = false;
-  bool _open = false;
-  bool _est = statusFilter.contains('E');
-  bool _contract = false;
-  bool _active = false;
-  bool _cancel = false;
-  bool _other = false;
-  bool _finished = false;
-  bool _hold = false;
-
   int index = 2;
   @override
   Widget build(BuildContext scaffoldContext) {
+    bool _close = false;
+    bool _open = false;
+    bool _est = statusFilter.contains('E');
+    bool _contract = statusFilter.contains('X');
+    bool _active = statusFilter.contains('A');
+    bool _cancel = statusFilter.contains('C');
+    bool _other = statusFilter.contains('O');
+    bool _finished = statusFilter.contains('F');
+    bool _hold = statusFilter.contains('H');
+
     print(_est);
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -127,161 +127,271 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       endDrawer: Drawer(
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Filter Jobs",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.start,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      OutlinedButton(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Filter Jobs",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.start,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () {
+                        setState(() {});
+                      },
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text("Open"),
+                    ),
+                    OutlinedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text("Closed"),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Status"),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text("Select All"),
+                    ),
+                  ],
+                ),
+                GridView.count(
+                  childAspectRatio: 3,
+                  shrinkWrap: true,
+                  mainAxisSpacing: 30,
+                  crossAxisSpacing: 20,
+                  crossAxisCount: 2,
+                  children: [
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _est ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          if (states.contains(MaterialState.pressed)) {
+                            return Colors.red;
+                          }
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text(
+                        "Estimate",
+                        style: TextStyle(
+                            color: _est ? Colors.white : Color(0xFFF47621)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _est
+                              ? statusFilter.remove('E')
+                              : statusFilter.add('E');
+                          print(statusFilter);
+                        });
+                      },
+                    ),
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _contract ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text(
+                        "Contract",
+                        style: TextStyle(
+                            color:
+                                _contract ? Colors.white : Color(0xFFF47621)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _contract
+                              ? statusFilter.remove('X')
+                              : statusFilter.add('X');
+                          print(statusFilter);
+                        });
+                      },
+                    ),
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _active ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text(
+                        "Active",
+                        style: TextStyle(
+                            color: _active ? Colors.white : Color(0xFFF47621)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _active
+                              ? statusFilter.remove('A')
+                              : statusFilter.add('A');
+                          print(statusFilter);
+                        });
+                      },
+                    ),
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _cancel ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text(
+                        "Cancelled",
+                        style: TextStyle(
+                            color: _cancel ? Colors.white : Color(0xFFF47621)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _cancel
+                              ? statusFilter.remove('C')
+                              : statusFilter.add('C');
+                          print(statusFilter);
+                        });
+                      },
+                    ),
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _other ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text(
+                        "Other  ",
+                        style: TextStyle(
+                            color: _other ? Colors.white : Color(0xFFF47621)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _other
+                              ? statusFilter.remove('O')
+                              : statusFilter.add('O');
+                          print(statusFilter);
+                        });
+                      },
+                    ),
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _finished ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text(
+                        "Finished",
+                        style: TextStyle(
+                            color:
+                                _finished ? Colors.white : Color(0xFFF47621)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _finished
+                              ? statusFilter.remove('F')
+                              : statusFilter.add('F');
+                          print(statusFilter);
+                        });
+                      },
+                    ),
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _hold ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13.0))),
+                      ),
+                      child: Text(
+                        "On Hold",
+                        style: TextStyle(
+                            color: _hold ? Colors.white : Color(0xFFF47621)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _hold
+                              ? statusFilter.remove('H')
+                              : statusFilter.add('H');
+                          print(statusFilter);
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                Expanded(child: Container()),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                      alignment: AlignmentDirectional.center,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xFFF47621),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
                         onPressed: () {
-                          setState(() {});
+                          listKey.currentState.build(context);
                         },
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text("Open"),
-                      ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text("Closed"),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Status"),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text("Select All"),
-                      ),
-                    ],
-                  ),
-                  GridView.count(
-                    childAspectRatio: 3,
-                    shrinkWrap: true,
-                    mainAxisSpacing: 30,
-                    crossAxisSpacing: 20,
-                    crossAxisCount: 2,
-                    children: [
-                      OutlinedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              _est ? Color(0xFFF47621) : Colors.white),
-                          overlayColor:
-                              MaterialStateProperty.resolveWith<Color>(
-                                  (states) {
-                            if (states.contains(MaterialState.pressed)) {
-                              return Colors.red;
-                            }
-                            return Colors.transparent;
-                          }),
-                          side: MaterialStateProperty.all(
-                              BorderSide(color: Color(0xFFF47621))),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text(
-                          "Estimate",
-                          style: TextStyle(
-                              color: _est ? Colors.white : Color(0xFFF47621)),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _est
-                                ? statusFilter.remove('E')
-                                : statusFilter.add('E');
-                            print(statusFilter);
-                          });
-                        },
-                      ),
-                      OutlinedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text("Contract"),
-                        onPressed: () {
-                          // statusFilter = 'C';
-                        },
-                      ),
-                      OutlinedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text("Active"),
-                        onPressed: () {
-                          // statusFilter = 'A';
-                        },
-                      ),
-                      OutlinedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text("Cancelled"),
-                        onPressed: () {
-                          // statusFilter = 'E';
-                        },
-                      ),
-                      OutlinedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text("Other  "),
-                        onPressed: () {
-                          // statusFilter = 'E';
-                        },
-                      ),
-                      OutlinedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text("Finished"),
-                        onPressed: () {
-                          // statusFilter = 'E';
-                        },
-                      ),
-                      OutlinedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13.0))),
-                        ),
-                        child: Text("On Hold"),
-                        onPressed: () {
-                          // statusFilter = 'E';
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                        child: Text('Apply'),
+                      )),
+                )
+              ],
             ),
           ),
         ),

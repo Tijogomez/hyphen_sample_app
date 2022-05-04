@@ -9,6 +9,9 @@ import '../test_screen/job_test_screen.dart';
 
 final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
+bool _close = false;
+bool _open = true;
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
 
@@ -28,8 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int index = 2;
   @override
   Widget build(BuildContext scaffoldContext) {
-    bool _close = false;
-    bool _open = false;
     bool _est = statusFilter.contains('E');
     bool _contract = statusFilter.contains('X');
     bool _active = statusFilter.contains('A');
@@ -38,7 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
     bool _finished = statusFilter.contains('F');
     bool _hold = statusFilter.contains('H');
 
-    print(_est);
+    var _allFilterElements = ['E', 'X', 'A', 'C', 'O', 'F', 'H'];
+    bool _all = statusFilter.toSet().containsAll(_allFilterElements.toSet());
+
+    print(_all);
 
     return Scaffold(
       key: scaffoldKey,
@@ -120,9 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Card(
           elevation: 0,
-          child: SingleChildScrollView(
-            child: _widgetOptions.elementAt(index),
-          ),
+          child: _widgetOptions.elementAt(index),
         ),
       ),
       endDrawer: Drawer(
@@ -142,21 +144,48 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     OutlinedButton(
                       onPressed: () {
-                        setState(() {});
+                        setState(() {
+                          _open ? false : true;
+                        });
                       },
                       style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _open ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
-                      child: Text("Open"),
+                      child: Text("Open",
+                          style: TextStyle(
+                              color: _open ? Colors.white : Color(0xFFF47621))),
                     ),
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          _close ? false : true;
+                        });
+                      },
                       style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            _close ? Color(0xFFF47621) : Colors.white),
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
-                      child: Text("Closed"),
+                      child: Text("Closed",
+                          style: TextStyle(
+                              color:
+                                  _close ? Colors.white : Color(0xFFF47621))),
                     ),
                   ],
                 ),
@@ -165,8 +194,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text("Status"),
                     TextButton(
-                      onPressed: () {},
-                      child: Text("Select All"),
+                      onPressed: () {
+                        setState(() {
+                          _all
+                              ? statusFilter.clear()
+                              : statusFilter
+                                  .addAll(['A', 'E', 'X', 'C', 'O', 'F', 'H']);
+                          print(statusFilter);
+                        });
+                      },
+                      child: Text(
+                        _all ? "Deselect All" : "Select All",
+                        style: TextStyle(
+                            color: Color(0xFFF47621),
+                            decoration: TextDecoration.underline),
+                      ),
+                      style: ButtonStyle(
+                        overlayColor:
+                            MaterialStateProperty.resolveWith<Color>((states) {
+                          return Colors.transparent;
+                        }),
+                      ),
                     ),
                   ],
                 ),
@@ -183,9 +231,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             _est ? Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
-                          if (states.contains(MaterialState.pressed)) {
-                            return Colors.red;
-                          }
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
@@ -203,7 +248,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           _est
                               ? statusFilter.remove('E')
                               : statusFilter.add('E');
-                          print(statusFilter);
                         });
                       },
                     ),
@@ -231,7 +275,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           _contract
                               ? statusFilter.remove('X')
                               : statusFilter.add('X');
-                          print(statusFilter);
                         });
                       },
                     ),
@@ -258,7 +301,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           _active
                               ? statusFilter.remove('A')
                               : statusFilter.add('A');
-                          print(statusFilter);
                         });
                       },
                     ),
@@ -285,7 +327,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           _cancel
                               ? statusFilter.remove('C')
                               : statusFilter.add('C');
-                          print(statusFilter);
                         });
                       },
                     ),
@@ -312,7 +353,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           _other
                               ? statusFilter.remove('O')
                               : statusFilter.add('O');
-                          print(statusFilter);
                         });
                       },
                     ),
@@ -340,7 +380,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           _finished
                               ? statusFilter.remove('F')
                               : statusFilter.add('F');
-                          print(statusFilter);
                         });
                       },
                     ),
@@ -367,7 +406,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           _hold
                               ? statusFilter.remove('H')
                               : statusFilter.add('H');
-                          print(statusFilter);
                         });
                       },
                     ),
@@ -377,19 +415,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                      alignment: AlignmentDirectional.center,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFF47621),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
+                    alignment: AlignmentDirectional.center,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFF47621),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
-                        onPressed: () {
-                          listKey.currentState.build(context);
-                        },
-                        child: Text('Apply'),
-                      )),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        listRefreshKey.currentState.show();
+                      },
+                      child: Text('Apply'),
+                    ),
+                  ),
                 )
               ],
             ),

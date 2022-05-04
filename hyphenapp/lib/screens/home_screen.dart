@@ -21,11 +21,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Widget> _widgetOptions = <Widget>[
-    JobTestScreen(),
-    AssignedTestScreen(),
-    HomeTestScreen(),
-    HomeTestScreen(),
-    HomeTestScreen(),
+    const JobTestScreen(),
+    const AssignedTestScreen(),
+    const HomeTestScreen(),
+    const HomeTestScreen(),
+    const HomeTestScreen(),
   ];
 
   int index = 2;
@@ -42,8 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
     var _allFilterElements = ['E', 'X', 'A', 'C', 'O', 'F', 'H'];
     bool _all = statusFilter.toSet().containsAll(_allFilterElements.toSet());
 
-    print(_all);
-
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -59,8 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Image.asset('assets/images/app_icon.png'),
         ),
         title: Column(
-          children: [
-            const Text(
+          children: const [
+            Text(
               "Andree Douglass",
               style: TextStyle(
                 color: Colors.black38,
@@ -72,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: <Widget>[
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
               onSelected: (value) {
                 Navigator.of(context, rootNavigator: true).pushReplacement(
@@ -81,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               },
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundColor: Color(0xFFF47621),
                 foregroundColor: Colors.white,
                 child: Text(
@@ -99,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 PopupMenuItem(
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.assignment_turned_in,
                         color: Colors.black45,
                       ),
@@ -112,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ],
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -134,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Filter Jobs",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   textAlign: TextAlign.start,
@@ -150,19 +148,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _open ? Color(0xFFF47621) : Colors.white),
+                            _open ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text("Open",
                           style: TextStyle(
-                              color: _open ? Colors.white : Color(0xFFF47621))),
+                              color: _open
+                                  ? Colors.white
+                                  : const Color(0xFFF47621))),
                     ),
                     OutlinedButton(
                       onPressed: () {
@@ -172,27 +172,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _close ? Color(0xFFF47621) : Colors.white),
+                            _close ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text("Closed",
                           style: TextStyle(
-                              color:
-                                  _close ? Colors.white : Color(0xFFF47621))),
+                              color: _close
+                                  ? Colors.white
+                                  : const Color(0xFFF47621))),
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Status"),
+                    const Text("Status"),
                     TextButton(
                       onPressed: () {
                         setState(() {
@@ -200,12 +201,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               ? statusFilter.clear()
                               : statusFilter
                                   .addAll(['A', 'E', 'X', 'C', 'O', 'F', 'H']);
-                          print(statusFilter);
                         });
                       },
                       child: Text(
                         _all ? "Deselect All" : "Select All",
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Color(0xFFF47621),
                             decoration: TextDecoration.underline),
                       ),
@@ -228,20 +228,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _est ? Color(0xFFF47621) : Colors.white),
+                            _est ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text(
                         "Estimate",
                         style: TextStyle(
-                            color: _est ? Colors.white : Color(0xFFF47621)),
+                            color:
+                                _est ? Colors.white : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
                         setState(() {
@@ -254,21 +255,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _contract ? Color(0xFFF47621) : Colors.white),
+                            _contract ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text(
                         "Contract",
                         style: TextStyle(
-                            color:
-                                _contract ? Colors.white : Color(0xFFF47621)),
+                            color: _contract
+                                ? Colors.white
+                                : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
                         setState(() {
@@ -281,20 +283,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _active ? Color(0xFFF47621) : Colors.white),
+                            _active ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text(
                         "Active",
                         style: TextStyle(
-                            color: _active ? Colors.white : Color(0xFFF47621)),
+                            color: _active
+                                ? Colors.white
+                                : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
                         setState(() {
@@ -307,20 +311,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _cancel ? Color(0xFFF47621) : Colors.white),
+                            _cancel ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text(
                         "Cancelled",
                         style: TextStyle(
-                            color: _cancel ? Colors.white : Color(0xFFF47621)),
+                            color: _cancel
+                                ? Colors.white
+                                : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
                         setState(() {
@@ -333,20 +339,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _other ? Color(0xFFF47621) : Colors.white),
+                            _other ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text(
                         "Other  ",
                         style: TextStyle(
-                            color: _other ? Colors.white : Color(0xFFF47621)),
+                          color:
+                              _other ? Colors.white : const Color(0xFFF47621),
+                        ),
                       ),
                       onPressed: () {
                         setState(() {
@@ -359,21 +367,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _finished ? Color(0xFFF47621) : Colors.white),
+                            _finished ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text(
                         "Finished",
                         style: TextStyle(
-                            color:
-                                _finished ? Colors.white : Color(0xFFF47621)),
+                            color: _finished
+                                ? Colors.white
+                                : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
                         setState(() {
@@ -386,20 +395,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            _hold ? Color(0xFFF47621) : Colors.white),
+                            _hold ? const Color(0xFFF47621) : Colors.white),
                         overlayColor:
                             MaterialStateProperty.resolveWith<Color>((states) {
                           return Colors.transparent;
                         }),
                         side: MaterialStateProperty.all(
-                            BorderSide(color: Color(0xFFF47621))),
+                            const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0))),
                       ),
                       child: Text(
                         "On Hold",
                         style: TextStyle(
-                            color: _hold ? Colors.white : Color(0xFFF47621)),
+                            color:
+                                _hold ? Colors.white : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
                         setState(() {
@@ -418,7 +428,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: AlignmentDirectional.center,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF47621),
+                        primary: const Color(0xFFF47621),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
@@ -427,7 +437,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.of(context).pop();
                         listRefreshKey.currentState.show();
                       },
-                      child: Text('Apply'),
+                      child: const Text('Apply'),
                     ),
                   ),
                 )
@@ -448,7 +458,7 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedItemColor: Colors.grey,
         currentIndex: index,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: InkWell(
               child: Icon(
                 Icons.location_pin,
@@ -456,9 +466,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          BottomNavigationBarItem(
-            icon: InkWell(
-              child: Icon(
+          const BottomNavigationBarItem(
+            icon: const InkWell(
+              child: const Icon(
                 Icons.assignment_turned_in,
                 size: 30,
               ),
@@ -493,7 +503,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                     }
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.menu,
                     size: 30,
                   ),
@@ -501,17 +511,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         PopupMenuItem(
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 'v1.2.1 dev',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20.0,
                               ),
                               Row(
-                                children: [
+                                children: const [
                                   Icon(
                                     Icons.location_pin,
                                     color: Colors.grey,
@@ -524,7 +534,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   )
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15.0,
                               )
                             ],
@@ -533,7 +543,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         PopupMenuItem(
                           child: Row(
-                            children: [
+                            children: const [
                               Icon(Icons.assignment_turned_in),
                               Text(
                                 'Tasks',

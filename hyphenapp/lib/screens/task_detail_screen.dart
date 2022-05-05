@@ -55,15 +55,20 @@ class _TaskDetailState extends State<TaskDetail> {
               width: double.infinity,
               child: Center(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                      size: 35,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: InkWell(
+                        onTap: Navigator.of(context).pop(),
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                      ),
                     ),
                     SizedBox(
-                      width: 5.0,
+                      width: 100.0,
                     ),
                     Text(
                       "Task Details",
@@ -73,10 +78,13 @@ class _TaskDetailState extends State<TaskDetail> {
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
-                    Icon(
-                      Icons.save,
-                      color: Colors.grey,
-                      size: 30,
+                    Padding(
+                      padding: EdgeInsets.only(left: 110.0),
+                      child: Icon(
+                        Icons.save,
+                        color: Colors.grey,
+                        size: 30,
+                      ),
                     ),
                   ],
                 ),

@@ -155,7 +155,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             transform: Matrix4.translationValues(
               50.0,
-              75.0,
+              125.0,
               0,
             ),
             child: const Image(

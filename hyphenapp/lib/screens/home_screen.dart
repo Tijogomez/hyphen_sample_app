@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:hyphenapp/main.dart';
+import 'package:hyphenapp/screens/login_screen.dart';
 import 'package:hyphenapp/test_screen/assigned_test_screen.dart';
 import 'package:hyphenapp/utils/filter.dart';
 import '../test_screen/home_test_screen.dart';
@@ -79,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               },
-              child: const CircleAvatar(
+              child: CircleAvatar(
                 backgroundColor: Color(0xFFF47621),
                 foregroundColor: Colors.white,
                 child: Text(
@@ -95,23 +96,26 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               itemBuilder: (context) => [
                 PopupMenuItem(
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.assignment_turned_in,
-                        color: Colors.black45,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Logout',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      )
-                    ],
+                  child: InkWell(
+                    // onTap: Navigator.pop(context),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.assignment_turned_in,
+                          color: Colors.black45,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Logout',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],

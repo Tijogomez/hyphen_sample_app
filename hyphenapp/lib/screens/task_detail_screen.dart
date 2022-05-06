@@ -59,7 +59,7 @@ class _TaskDetailState extends State<TaskDetail> {
                     Padding(
                       padding: EdgeInsets.only(left: 10.0),
                       child: InkWell(
-                        // onTap: Navigator.of(context).pop(),
+                        onTap: () => Navigator.of(context).pop(),
                         child: Icon(
                           Icons.arrow_back,
                           color: Colors.white,

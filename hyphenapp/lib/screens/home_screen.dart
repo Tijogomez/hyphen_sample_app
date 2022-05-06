@@ -73,13 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              onSelected: (value) {
-                Navigator.of(context, rootNavigator: true).pushReplacement(
-                  new MaterialPageRoute(
-                    builder: (BuildContext context) => new MyApp(),
-                  ),
-                );
-              },
+              // onSelected: (value) {
+              //   Navigator.of(context, rootNavigator: true).pushReplacement(
+              //     new MaterialPageRoute(
+              //       builder: (BuildContext context) => new MyApp(),
+              //     ),
+              //   );
+              // },
               child: CircleAvatar(
                 backgroundColor: Color(0xFFF47621),
                 foregroundColor: Colors.white,
@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context) => [
                 PopupMenuItem(
                   child: InkWell(
-                    // onTap: Navigator.pop(context),
+                    // onTap: () => Navigator.pop(context),
                     child: Row(
                       children: [
                         Icon(

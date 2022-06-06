@@ -34,12 +34,15 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 8.0),
               child: _labelLogin(),
             ),
+            // SizedBox(height: 5),
             _usernameField(),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: const EdgeInsets.only(top: 15.0),
               child: _passwordField(),
             ),
+            SizedBox(height: 10),
             _loginButton(),
+            SizedBox(height: 10.0),
             forgetPW(),
             _bottomImageSection()
           ],
@@ -86,12 +89,13 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget _loginButton() {
-    return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
-      return state.formStatus is FormSubmitting
-          ? CircularProgressIndicator()
-          : Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        return state.formStatus is FormSubmitting
+            ? CircularProgressIndicator()
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
                   height: 45,
                   width: 400,
                   child: ElevatedButton(
@@ -108,27 +112,33 @@ class LoginScreen extends StatelessWidget {
                     child: const Text(
                       'Login',
                       style: TextStyle(
-                        color: Color.fromRGBO(253, 239, 227, 50),
+                        fontWeight: FontWeight.w600,
+                        // color: Color.fromRGBO(253, 239, 227, 50),
+                        color: Colors.white,
                         fontSize: 18.0,
                         fontFamily: 'Nunito',
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFF47621),
+                      primary: const Color(0xFFF47621),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                  )));
-    });
+                  ),
+                ),
+              );
+      },
+    );
   }
 
   Expanded _imageSection() {
     return Expanded(
-        flex: 1,
-        child: Stack(children: [
+      flex: 1,
+      child: Stack(
+        children: [
           Container(
-            transform: Matrix4.translationValues(-50.0, -10.0, 0.0),
+            transform: Matrix4.translationValues(-50.0, -5.0, 0.0),
             child: const Image(
               image: AssetImage('assets/images/OrangeBlob@3x.png'),
               alignment: Alignment.centerLeft,
@@ -139,19 +149,22 @@ class LoginScreen extends StatelessWidget {
             margin: const EdgeInsets.only(right: 80),
           ),
           Positioned(
-            top: 0.0,
+            top: 25.0,
             bottom: 00.0,
             right: 0.0,
-            left: 0.0,
+            left: 10.0,
             child: Image.asset('assets/images/BuilderGMLogo@3x.png'),
           )
-        ]));
+        ],
+      ),
+    );
   }
 
   Expanded _bottomImageSection() {
     return Expanded(
-        flex: 1,
-        child: Stack(children: [
+      flex: 1,
+      child: Stack(
+        children: [
           Container(
             transform: Matrix4.translationValues(
               50.0,
@@ -174,26 +187,31 @@ class LoginScreen extends StatelessWidget {
             bottom: 70,
             child: _labelPowereby(),
           )
-        ]));
+        ],
+      ),
+    );
   }
 
   Widget _labelPowereby() {
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      const Text(
-        "Powered By",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 12,
-          color: Colors.grey,
-          fontFamily: 'Nunito',
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Powered By",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
+            color: Colors.grey,
+            fontFamily: 'Nunito',
+          ),
         ),
-      ),
-      Image.asset(
-        'assets/images/logo@3x.png',
-        height: 35,
-        width: 150,
-      )
-    ]);
+        Image.asset(
+          'assets/images/logo@3x.png',
+          height: 35,
+          width: 150,
+        )
+      ],
+    );
   }
 
   Widget _labelLogin() {
@@ -212,7 +230,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget forgetPW() {
-    return Text(
+    return const Text(
       "Forgot Password",
       style: TextStyle(
         color: Color(0xFF1675B7),

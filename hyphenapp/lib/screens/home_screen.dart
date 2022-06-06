@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
-import 'package:hyphenapp/main.dart';
-import 'package:hyphenapp/screens/login_screen.dart';
 import 'package:hyphenapp/test_screen/assigned_test_screen.dart';
 import 'package:hyphenapp/utils/filter.dart';
 import '../test_screen/home_test_screen.dart';
@@ -80,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //     ),
               //   );
               // },
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundColor: Color(0xFFF47621),
                 foregroundColor: Colors.white,
                 child: Text(
@@ -97,15 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context) => [
                 PopupMenuItem(
                   child: InkWell(
-                    // onTap: () => Navigator.pop(context),
+                    onTap: () => Navigator.pop(context),
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.assignment_turned_in,
                           color: Colors.black45,
                         ),
                         Row(
-                          children: [
+                          children: const [
                             Text(
                               'Logout',
                               style: TextStyle(
@@ -344,10 +342,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                             _other ? const Color(0xFFF47621) : Colors.white),
-                        overlayColor:
-                            MaterialStateProperty.resolveWith<Color>((states) {
-                          return Colors.transparent;
-                        }),
+                        overlayColor: MaterialStateProperty.resolveWith<Color>(
+                          (states) {
+                            return Colors.transparent;
+                          },
+                        ),
                         side: MaterialStateProperty.all(
                             const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(

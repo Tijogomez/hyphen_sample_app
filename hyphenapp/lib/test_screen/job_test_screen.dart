@@ -6,7 +6,7 @@ import 'package:hyphenapp/utils/filter.dart';
 List<int> jobnmbr = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 18, 19];
 List<String> jobDesc = [
   'Error Residence-Structural',
-  'Error Residence-Content ',
+  'Error Residence-Content Replacement',
   'PLA Building',
   'Blaise Cabin',
   'Brockwell Residence',
@@ -207,6 +207,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Divider(
+                      height: 13,
                       thickness: 2,
                     ),
                     Padding(

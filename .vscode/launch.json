@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "hyphenapp",
+            "cwd": "hyphenapp",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "hyphenapp (profile mode)",
+            "cwd": "hyphenapp",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "hyphenapp (release mode)",
+            "cwd": "hyphenapp",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

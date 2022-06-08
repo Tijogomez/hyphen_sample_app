@@ -122,10 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: SafeArea(
-        child: Card(
-          elevation: 0,
-          child: _widgetOptions.elementAt(index),
-        ),
+        child: _widgetOptions.elementAt(index),
       ),
       endDrawer: Drawer(
         child: SafeArea(
@@ -231,10 +228,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                             _est ? const Color(0xFFF47621) : Colors.white),
-                        overlayColor:
-                            MaterialStateProperty.resolveWith<Color>((states) {
-                          return Colors.transparent;
-                        }),
+                        overlayColor: MaterialStateProperty.resolveWith<Color>(
+                          (states) {
+                            return Colors.transparent;
+                          },
+                        ),
                         side: MaterialStateProperty.all(
                             const BorderSide(color: Color(0xFFF47621))),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(

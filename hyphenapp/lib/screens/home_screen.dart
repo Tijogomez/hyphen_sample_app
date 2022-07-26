@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:hyphenapp/screens/login_screen.dart';
 import 'package:hyphenapp/test_screen/assigned_test_screen.dart';
 import 'package:hyphenapp/utils/filter.dart';
 import '../test_screen/home_test_screen.dart';
 import 'package:hyphenapp/test_screen/home_test_screen.dart';
 import '../test_screen/job_test_screen.dart';
 
-final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 bool _close = false;
 bool _open = true;
@@ -71,13 +72,13 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              // onSelected: (value) {
-              //   Navigator.of(context, rootNavigator: true).pushReplacement(
-              //     new MaterialPageRoute(
-              //       builder: (BuildContext context) => new MyApp(),
-              //     ),
-              //   );
-              // },
+              onSelected: (value) {
+                Navigator.of(context, rootNavigator: true).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => LoginScreen(),
+                  ),
+                );
+              },
               child: const CircleAvatar(
                 backgroundColor: Color(0xFFF47621),
                 foregroundColor: Colors.white,
@@ -95,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context) => [
                 PopupMenuItem(
                   child: InkWell(
-                    onTap: () => Navigator.pop(context),
+                    onTap: () => Navigator.of(context).pop(),
                     child: Row(
                       children: [
                         const Icon(
@@ -141,9 +142,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     OutlinedButton(
                       onPressed: () {
-                        setState(() {
-                          _open ? false : true;
-                        });
+                        setState(
+                          () {
+                            _open ? false : true;
+                          },
+                        );
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
@@ -329,11 +332,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
-                        setState(() {
-                          _cancel
-                              ? statusFilter.remove('C')
-                              : statusFilter.add('C');
-                        });
+                        setState(
+                          () {
+                            _cancel
+                                ? statusFilter.remove('C')
+                                : statusFilter.add('C');
+                          },
+                        );
                       },
                     ),
                     OutlinedButton(
@@ -358,11 +363,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() {
-                          _other
-                              ? statusFilter.remove('O')
-                              : statusFilter.add('O');
-                        });
+                        setState(
+                          () {
+                            _other
+                                ? statusFilter.remove('O')
+                                : statusFilter.add('O');
+                          },
+                        );
                       },
                     ),
                     OutlinedButton(
@@ -386,11 +393,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
-                        setState(() {
-                          _finished
-                              ? statusFilter.remove('F')
-                              : statusFilter.add('F');
-                        });
+                        setState(
+                          () {
+                            _finished
+                                ? statusFilter.remove('F')
+                                : statusFilter.add('F');
+                          },
+                        );
                       },
                     ),
                     OutlinedButton(
@@ -413,11 +422,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 _hold ? Colors.white : const Color(0xFFF47621)),
                       ),
                       onPressed: () {
-                        setState(() {
-                          _hold
-                              ? statusFilter.remove('H')
-                              : statusFilter.add('H');
-                        });
+                        setState(
+                          () {
+                            _hold
+                                ? statusFilter.remove('H')
+                                : statusFilter.add('H');
+                          },
+                        );
                       },
                     ),
                   ],
@@ -468,8 +479,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const BottomNavigationBarItem(
-            icon: const InkWell(
-              child: const Icon(
+            icon: InkWell(
+              child: Icon(
                 Icons.assignment_turned_in,
                 size: 30,
               ),
@@ -493,70 +504,69 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: InkWell(
               child: PopupMenuButton(
-                  onSelected: (value) {
-                    if (value == 'jobs') {
-                      setState(() {
-                        this.index = 0;
-                      });
-                    } else if (value == 'tasks') {
-                      setState(() {
-                        this.index = 1;
-                      });
-                    }
-                  },
-                  child: const Icon(
-                    Icons.menu,
-                    size: 30,
-                  ),
-                  itemBuilder: (context) => [
-                        PopupMenuItem(
-                          child: Column(
-                            children: [
-                              const Text(
-                                'v1.2.1 dev',
-                                style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                height: 20.0,
-                              ),
-                              Row(
-                                children: const [
-                                  Icon(
-                                    Icons.location_pin,
-                                    color: Colors.grey,
-                                  ),
-                                  Text(
-                                    'Jobs',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w500),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 15.0,
-                              )
-                            ],
-                          ),
-                          value: "jobs",
+                onSelected: (value) {
+                  if (value == 'jobs') {
+                    setState(() {
+                      this.index = 0;
+                    });
+                  } else if (value == 'tasks') {
+                    setState(() {
+                      this.index = 1;
+                    });
+                  }
+                },
+                child: const Icon(
+                  Icons.menu,
+                  size: 30,
+                ),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: Column(
+                      children: [
+                        const Text(
+                          'v1.2.1 dev',
+                          style: TextStyle(
+                              color: Colors.grey, fontWeight: FontWeight.bold),
                         ),
-                        PopupMenuItem(
-                          child: Row(
-                            children: const [
-                              Icon(Icons.assignment_turned_in),
-                              Text(
-                                'Tasks',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          ),
-                          value: 'tasks',
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Row(
+                          children: const [
+                            Icon(
+                              Icons.location_pin,
+                              color: Colors.grey,
+                            ),
+                            Text(
+                              'Jobs',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 15.0,
                         )
-                      ]),
+                      ],
+                    ),
+                    value: "jobs",
+                  ),
+                  PopupMenuItem(
+                    child: Row(
+                      children: const [
+                        Icon(Icons.assignment_turned_in),
+                        Text(
+                          'Tasks',
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                    value: 'tasks',
+                  )
+                ],
+              ),
             ),
           ),
         ],

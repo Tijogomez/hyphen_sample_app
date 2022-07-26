@@ -28,8 +28,8 @@ class _TaskDetailState extends State<TaskDetail> {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 80.0),
+        leading: const Padding(
+          padding: EdgeInsets.only(left: 80.0),
           child: Icon(
             Icons.location_pin,
             color: Colors.black54,
@@ -37,7 +37,8 @@ class _TaskDetailState extends State<TaskDetail> {
         ),
         title: Text(
           'Job ${widget.number} ${widget.description}',
-          style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+          style:
+              const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
@@ -57,20 +58,20 @@ class _TaskDetailState extends State<TaskDetail> {
                 child: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 10.0),
+                      padding: const EdgeInsets.only(left: 10.0),
                       child: InkWell(
                         onTap: () => Navigator.of(context).pop(),
-                        child: Icon(
+                        child: const Icon(
                           Icons.arrow_back,
                           color: Colors.white,
                           size: 35,
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 100.0,
                     ),
-                    Text(
+                    const Text(
                       "Task Details",
                       style: TextStyle(
                           fontFamily: 'Nunito',
@@ -78,7 +79,7 @@ class _TaskDetailState extends State<TaskDetail> {
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 110.0),
                       child: Icon(
                         Icons.save,
@@ -140,11 +141,12 @@ class _TaskDetailState extends State<TaskDetail> {
                               child: TextFormField(
                                 maxLines: 4,
                                 decoration: InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 12),
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(0))),
+                                  contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 12),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(0),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -156,7 +158,7 @@ class _TaskDetailState extends State<TaskDetail> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              'Phase:',
+                              'Phase :',
                               style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black45,
@@ -175,11 +177,12 @@ class _TaskDetailState extends State<TaskDetail> {
                                   ),
                                   iconDisabledColor: Colors.black,
                                   decoration: InputDecoration(
-                                      contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 12),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(0))),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 12),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -190,7 +193,7 @@ class _TaskDetailState extends State<TaskDetail> {
                         padding: const EdgeInsets.only(top: 20, left: 55),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Proj Start:',
                               style: TextStyle(
                                   fontSize: 15,
@@ -203,16 +206,17 @@ class _TaskDetailState extends State<TaskDetail> {
                                 height: 35,
                                 child: TextField(
                                   decoration: InputDecoration(
-                                      hintText: widget.schedstart,
-                                      hintStyle: TextStyle(
-                                        color: Colors.grey,
-                                      ),
-                                      suffixIcon: Icon(Icons.date_range),
-                                      contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 12),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(0))),
+                                    hintText: widget.schedstart,
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey,
+                                    ),
+                                    suffixIcon: Icon(Icons.date_range),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 12),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -223,7 +227,7 @@ class _TaskDetailState extends State<TaskDetail> {
                         padding: const EdgeInsets.only(top: 20, left: 60),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Act Start:',
                               style: TextStyle(
                                   fontSize: 15,
@@ -236,16 +240,17 @@ class _TaskDetailState extends State<TaskDetail> {
                                 height: 35,
                                 child: TextField(
                                   decoration: InputDecoration(
-                                      hintText: widget.actstart,
-                                      hintStyle: TextStyle(
-                                        color: Colors.grey,
-                                      ),
-                                      suffixIcon: Icon(Icons.date_range),
-                                      contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 12),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(0))),
+                                    hintText: widget.actstart,
+                                    hintStyle: const TextStyle(
+                                      color: Colors.grey,
+                                    ),
+                                    suffixIcon: const Icon(Icons.date_range),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -256,7 +261,7 @@ class _TaskDetailState extends State<TaskDetail> {
                         padding: const EdgeInsets.only(top: 20, left: 25),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Proj Complete:',
                               style: TextStyle(
                                   fontSize: 15,
@@ -270,12 +275,13 @@ class _TaskDetailState extends State<TaskDetail> {
                                 child: TextField(
                                   decoration: InputDecoration(
                                       hintText: widget.schedstart,
-                                      hintStyle: TextStyle(
+                                      hintStyle: const TextStyle(
                                         color: Colors.grey,
                                       ),
-                                      suffixIcon: Icon(Icons.date_range),
+                                      suffixIcon: const Icon(Icons.date_range),
                                       contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 12),
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 12),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(0))),
@@ -289,7 +295,7 @@ class _TaskDetailState extends State<TaskDetail> {
                         padding: const EdgeInsets.only(top: 20, left: 30),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Act Complete:',
                               style: TextStyle(
                                   fontSize: 15,
@@ -302,15 +308,16 @@ class _TaskDetailState extends State<TaskDetail> {
                                 height: 35,
                                 child: TextField(
                                   decoration: InputDecoration(
-                                      hintStyle: TextStyle(
-                                        color: Colors.grey,
-                                      ),
-                                      suffixIcon: Icon(Icons.date_range),
-                                      contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 12),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(0))),
+                                    hintStyle: const TextStyle(
+                                      color: Colors.grey,
+                                    ),
+                                    suffixIcon: const Icon(Icons.date_range),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -322,7 +329,7 @@ class _TaskDetailState extends State<TaskDetail> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
+                            const Text(
                               'Category:',
                               style: TextStyle(
                                   fontSize: 15,
@@ -334,7 +341,7 @@ class _TaskDetailState extends State<TaskDetail> {
                               child: SizedBox(
                                 height: 35,
                                 child: DropdownButtonFormField(
-                                  hint: Text(
+                                  hint: const Text(
                                     '33-Paint & Wall Covering ',
                                     style: TextStyle(
                                         color: Colors.grey,
@@ -342,11 +349,12 @@ class _TaskDetailState extends State<TaskDetail> {
                                   ),
                                   iconDisabledColor: Colors.black,
                                   decoration: InputDecoration(
-                                      contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 12),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(0))),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -358,7 +366,7 @@ class _TaskDetailState extends State<TaskDetail> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
+                            const Text(
                               'SubCategory:',
                               style: TextStyle(
                                   fontSize: 15,
@@ -370,7 +378,7 @@ class _TaskDetailState extends State<TaskDetail> {
                               child: SizedBox(
                                 height: 35,
                                 child: DropdownButtonFormField(
-                                  hint: Text(
+                                  hint: const Text(
                                     '33-10 Painting - Exterior ',
                                     style: TextStyle(
                                         color: Colors.grey,
@@ -378,30 +386,32 @@ class _TaskDetailState extends State<TaskDetail> {
                                   ),
                                   iconDisabledColor: Colors.black,
                                   decoration: InputDecoration(
-                                      contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 12),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(0))),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.grey,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0))),
-                          onPressed: () {},
-                          child: Text(
-                            'Update Template',
-                            style: TextStyle(color: Colors.white70),
-                          ))
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.grey,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {},
+                        child: const Text(
+                          'Update Template',
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

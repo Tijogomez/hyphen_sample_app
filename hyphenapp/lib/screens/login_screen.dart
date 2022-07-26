@@ -40,9 +40,9 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 15.0),
               child: _passwordField(),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _loginButton(),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             forgetPW(),
             _bottomImageSection()
           ],
@@ -70,29 +70,31 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget _passwordField() {
-    return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
-      return TextFormField(
-        obscureText: true,
-        decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 12),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-            hintText: 'Password',
-            hintStyle: TextStyle(color: Color.fromRGBO(192, 193, 192, 15))),
-        validator: (value) =>
-            state.isValidPassword ? null : 'Min of 8 char required',
-        onChanged: (value) =>
-            context.read<LoginBloc>().add(LoginPasswordChanged(value)),
-      );
-    });
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        return TextFormField(
+          obscureText: true,
+          decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(horizontal: 12),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              hintText: 'Password',
+              hintStyle: TextStyle(color: Color.fromRGBO(192, 193, 192, 15))),
+          validator: (value) =>
+              state.isValidPassword ? null : 'Min of 8 char required',
+          onChanged: (value) =>
+              context.read<LoginBloc>().add(LoginPasswordChanged(value)),
+        );
+      },
+    );
   }
 
   Widget _loginButton() {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         return state.formStatus is FormSubmitting
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
@@ -105,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
+                              builder: (context) => const HomeScreen(),
                             ));
                       }
                     },

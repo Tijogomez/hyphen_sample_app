@@ -76,21 +76,22 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
   ];
 
   final List<AssignedTasksGet> Assignedtasks = List.generate(
-      heading.length,
-      (index) => AssignedTasksGet(
-          heading[index],
-          status[index],
-          schedstart[index],
-          schedend[index],
-          actstart[index],
-          description[index],
-          jobnumber[index],
-          taskicon[index]));
+    heading.length,
+    (index) => AssignedTasksGet(
+        heading[index],
+        status[index],
+        schedstart[index],
+        schedend[index],
+        actstart[index],
+        description[index],
+        jobnumber[index],
+        taskicon[index]),
+  );
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Card(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(15.0),
             topRight: Radius.circular(15),
@@ -101,7 +102,7 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
           // mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFFF47621),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(15.0),
@@ -113,7 +114,7 @@ class _AssignedTestScreenState extends State<AssignedTestScreen> {
               child: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Icon(
                       Icons.assignment_turned_in,
                       color: Colors.white,
